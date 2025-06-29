@@ -15,7 +15,7 @@ public class Customer {
         this.billDate = new Date();
         calculateBill();
     }
-    private void calculateBill() {
+    public void calculateBill() {
         int remainingUnits = unitsConsumed;
         double totalBill = 0;
         billDetails = "";
@@ -24,10 +24,12 @@ public class Customer {
             // Less than 10 units
             totalBill = remainingUnits * (100/10);
             billDetails += remainingUnits + " units × Rs. 10 = Rs. " + String.format("%.2f", totalBill) + "\n";
+
         } else if (remainingUnits == 10) {
             // Exactly 10 units
             totalBill = 100;
             billDetails += "10 units = Rs. 100\n";
+
         } else if (remainingUnits > 10 && remainingUnits < 30) {
             // More than 10 but less than 30 units i.e. 20 units
             totalBill += 100;
@@ -38,11 +40,13 @@ public class Customer {
             double partialCharge = unitsAbove10 * rate;
             totalBill += partialCharge;
             billDetails += "Next " + unitsAbove10 + " units × Rs. " + String.format("%.2f", rate) + " = Rs. " + String.format("%.2f", partialCharge) + "\n";
+
         } else if (remainingUnits == 30) {
             // Exactly 30 units
             totalBill = 100 + 250;
             billDetails += "First 10 units = Rs. 100\n";
             billDetails += "Next 20 units = Rs. 250\n";
+
         } else {
             // More than 30 units
             totalBill += 100;  // First 10 units

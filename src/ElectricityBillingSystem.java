@@ -27,7 +27,7 @@ public class ElectricityBillingSystem {
             String houseNo = scanner.nextLine();
 
             System.out.print("Units Consumed: ");
-            int units = scanner.nextInt();
+            int units= Integer.parseInt(scanner.nextLine());
 
             Customer cust = new Customer(name, houseNo, units);
             cust.printBill(i);
@@ -42,9 +42,9 @@ public class ElectricityBillingSystem {
         if (highestPaying != null) {
             System.out.println("Name: " + highestPaying.name);
             System.out.println("House Number: " + highestPaying.houseNumber);
-            System.out.println("Paid Amount: Rs. " + String.format("%.2f", highestPaying.bill));
+            System.out.println("Paid Amount: " + highestPaying.bill);
         }
 
-        scanner.close();
+
     }
 }
